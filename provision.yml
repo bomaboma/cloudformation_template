@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+    - name: First take Provision Ec2
+      cloudformation:
+        stack_name: 'Realman'
+        state: present
+        region: us-east-1
+        disable_rollback: true
+        template_url: https://s3.amazonaws.com/mbray/cloudformation.template.txt
+        template_parameters:
+          KeyName: Jesus
+          SecurityGroupIds: sg-049fe4302e470fa6c
+          InstanceType: t2.micro
+          Image: ami-011b3ccf1bd6db744
+          ServerName: 'Realman'
